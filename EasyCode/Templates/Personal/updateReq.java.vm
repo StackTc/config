@@ -1,0 +1,95 @@
+$!{define.vm}
+$!{mybatisCodehelper.vm}
+#set($entitySavePath = $tool.append(${javamodelSrcFolder},"/",${reqPackageName.replace(".","/")}))
+
+$!callback.setSavePath($entitySavePath)
+$!callback.setFileName($tool.append($tableInfo.name, "UpdateReq.java"))
+
+package ${reqPackageName};
+#set($useLombok=true)
+#set($useSwagger=true)
+#set($useOpenApi=false)
+#set($addSchemaName=false)
+#set($implementSerializable=false)
+#set($getSetMethod=true)
+#set($javaxValidation=true)
+#set($containsDate=false)
+#set($containsNotNull=false)
+#set($containsNotBlank=false)
+#foreach($column in $tableInfo.fullColumn)
+    #set($fieldType = ${column.type})
+    #if($skipFields.contains($column.obj.name))
+    #else
+        #if($javaxValidation)
+            #if($fieldType.equals("java.lang.String"))
+                #set($containsNotBlank=true)
+            #end
+            #if($fieldType.equals("java.lang.Integer"))
+                #set($containsNotNull=true)
+            #end
+            #if($fieldType.equals("java.lang.Long"))
+                #set($containsNotNull=true)
+            #end
+            #if($fieldType.equals("java.util.Date"))
+                #set($containsDate=true)
+            #end
+        #end
+    #end
+#end
+#if($containsNotNull)
+import javax.validation.constraints.NotNull;
+#end
+#if($containsNotBlank)
+import javax.validation.constraints.NotBlank;
+#end
+#if($containsDate)
+import java.util.Date;
+#end
+#if($useLombok)
+    #set($getSetMethod=false)
+#end
+#if($implementSerializable)
+import java.io.Serializable;
+#end
+#if(${useLombok})
+import lombok.Data;
+#end
+#if($useSwagger)
+import io.swagger.annotations.ApiModelProperty;
+#end
+#if($useOpenApi)
+import io.swagger.v3.oas.annotations.media.Schema;
+#end
+#if($useLombok)
+@Data
+#end
+#set($skipFields = ["skip1","skip2"])
+public class $!{tableInfo.name}UpdateReq #if(${implementSerializable}) implements Serializable #end {
+#foreach($column in $tableInfo.fullColumn)
+    #set($fieldType = ${column.type})
+    #if($skipFields.contains($column.obj.name))
+    #else
+
+        #if(${useSwagger})
+            #if(${column.obj.comment})
+            @ApiModelProperty(value = "${column.obj.comment.replace('\r','').replace('/','').replace(' ','').replace('*','').replaceAll('\n','')}")
+            #end
+            #if(!${column.obj.comment})
+            @ApiModelProperty(value = "${column.obj.name}")
+            #end
+        #end
+        #if($javaxValidation)
+            #if($fieldType.equals("java.lang.String"))
+            @NotBlank(message = "${column.obj.name}不能为空")
+            #end
+            #if($fieldType.equals("java.lang.Integer"))
+            @NotNull(message = "${column.obj.name}不能为空")
+            #end
+            #if($fieldType.equals("java.lang.Long"))
+            @NotNull(message = "${column.obj.name}不能为空")
+            #end
+        #end
+    private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
+    #end
+#end
+}

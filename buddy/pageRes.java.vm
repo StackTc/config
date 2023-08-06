@@ -1,0 +1,83 @@
+#* @vtlvariable name="targetPackageName" type="java.lang.String" *#
+#* @vtlvariable name="targetName" type="java.lang.String" *#
+#* @vtlvariable name="sourceClass" type="com.intellij.psi.PsiClass" *#
+#* @vtlvariable name="ognlHelper" type="com.bruce.intellijplugin.dtomarker.g.a" *#
+##name current file to DtoBuddy_xxx.java.vm for plugin to provide code completion for it.
+##In dtoBuddy.json use  "targetTemplateFileName":"DtoBuddy_example.java.vm" for generate dto by template.
+
+package ${targetPackageName};
+#set($useLombok=true)
+#set($useSwagger=true)
+#set($useOpenApi=false)
+#set($addSchemaName=false)
+#set($implementSerializable=false)
+#set($getSetMethod=true)
+#set($javaxValidation=false)
+#set($containsDate=false)
+#if($useLombok)
+    #set($getSetMethod=false)
+#end
+#if($implementSerializable)
+import java.io.Serializable;
+#end
+#if(${useLombok})
+import lombok.Data;
+#end
+#if($useSwagger)
+import io.swagger.annotations.ApiModelProperty;
+#end
+#if($useOpenApi)
+import io.swagger.v3.oas.annotations.media.Schema;
+#end
+#if($useLombok)
+@Data
+#end
+#set($skipFields = ["skip1","skip2"])
+public class ${targetName} #if(${implementSerializable}) implements Serializable #end {
+#foreach($field in $sourceClass.fields)
+    #set($fieldType = ${field.type.canonicalText})
+    #if($skipFields.contains($field.name))
+    #else
+
+        #if(${useSwagger})
+        #if(${field.docComment.text})
+        @ApiModelProperty(value = "${field.docComment.text.replace('\r','').replace('/','').replace(' ','').replace('*','').replaceAll('\n','')}")
+        #end
+        #if(!${field.docComment.text})
+        @ApiModelProperty(value = "${field.name}")
+        #end
+        #end
+        #if(${useOpenApi})
+        @Schema(description = "${field.name}" )
+        #end
+        #if($javaxValidation)
+            #if($fieldType.equals("java.lang.String"))
+            @javax.validation.constraints.NotBlank(message = "${field.name} can not be blank")
+            #end
+            #if($fieldType.equals("java.lang.Integer"))
+            @javax.validation.constraints.NotNull(message = "${field.name} can not be null")
+            #end
+            #if($fieldType.equals("java.lang.Long"))
+            @javax.validation.constraints.NotNull(message = "${field.name} can not be null")
+            #end
+        #end
+    private ${field.type.canonicalText} ${field.name};
+    #end
+#end
+#if($getSetMethod)
+    #foreach($field in $sourceClass.fields)
+        #if($skipFields.contains($field.name))
+        #else
+        public ${field.type.canonicalText} get${field.name.substring(0,1).toUpperCase()}${field.name.substring(1)}() {
+                return ${field.name};
+                }
+
+        public void set${field.name.substring(0,1).toUpperCase()}${field.name.substring(1)}(${field.type.canonicalText} ${field.name}) {
+                this.${field.name} = ${field.name};
+                }
+        #end
+    #end
+#end
+##    how to call any call class in template.
+##    ${ognlHelper.getValueForVm("@org.apache.commons.lang3.StringUtils@isBlank('hello')")}
+        }
