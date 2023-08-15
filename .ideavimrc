@@ -9,6 +9,7 @@ Plug 'tpope/vim-surround'
 Plug 'tommcdo/vim-exchange'
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'dbakker/vim-paragraph-motion'
 let mapleader=" "
 " ================================================================================================
 " = Basic settings =====================================
@@ -16,7 +17,9 @@ let mapleader=" "
 nnoremap L $
 nnoremap H ^
 nnoremap dH d^
+nnoremap yH y^
 nnoremap dL d$
+nnoremap yL y$
 nnoremap <leader>sc :nohlsearch<CR>
 vnoremap Lsymotion-s) $
 vnoremap H ^
@@ -55,7 +58,6 @@ map Z <Plug>(multicursor-mcr)
 " ================================================================================================
 " = No Leader Keymaps =====================================
 " ================================================================================================
-nmap ge <action>(GotoNextError)
 nmap gt <action>(GotoTest)
 nmap gm <action>(MethodUp)
 " last changed in current buffer(file)
@@ -363,3 +365,5 @@ nnoremap <a-h> gT
 nnoremap <a-l> gt
 nnoremap <c-s-tab> gT
 nnoremap <c-tab> gt
+map <C-h> <C-w>h
+map <C-l> <C-w>l
