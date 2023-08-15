@@ -1,0 +1,30 @@
+##following code can be generated use MybatisCodeHelperPro plugin mybatis generator mingrate to template generate.
+##copy group for different project.
+#set($javamodelSrcFolder="${projectPath}/src/main/java")
+#set($modelPackageName="com.water.model")
+#set($reqPackageName="com.water.req")
+#set($resPackageName="com.water.res")
+
+#set($mapperSrcFolder="${projectPath}/src/main/java")
+#set($mapperPackageName="com.water.mapper")
+#set($mapperXmlFolder="${projectPath}/src/main/resources")
+#set($mapperXmlPackage="mapperxml")
+#set($serviceSrcFolder="${projectPath}/src/main/java")
+#set($servicePackageName="com.water.service")
+#set($serviceImplSrcFolder="${projectPath}/src/main/java")
+#set($serviceImplPackageName="com.water.service.impl")
+#set($controllerSrcFolder="${projectPath}/src/main/java")
+#set($controllerPackageName="com.water.controller")
+#set($useLombok=true)
+#set($useSwagger=false)
+#set($useOpenApi=false)
+#set($addSchemaName=false)
+#set($mapperSuffix="Mapper")
+#set($daoSuffix="Mapper")
+#set($useActualColumName=false)
+
+#if($useActualColumName)
+    #foreach($column in $tableInfo.fullColumn)
+        $!column.setName($column.obj.name)
+    #end
+#end

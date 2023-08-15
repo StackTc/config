@@ -1,0 +1,45 @@
+[
+  {
+    "sourcePackage": "com.water.model",
+    "targetPackage": "com.water.res",
+    "mapperPackage": "com.water.convert",
+    "targetNamer": "name+\u0027Res\u0027",
+    "mapperNamer": "name+\u0027Convert\u0027",
+    "mapperMethodName": "db2Res",
+    "mapperType": "GetSet",
+    "type": "SourceIsSource",
+    "targetTemplateFileName": "res.java.vm"
+  },
+  {
+    "sourcePackage": "com.water.model",
+    "targetPackage": "com.water.res",
+    "mapperPackage": "com.water.convert",
+    "targetNamer": "name+\u0027PageRes\u0027",
+    "mapperNamer": "name+\u0027Convert\u0027",
+    "mapperMethodName": "db2PageRes",
+    "mapperType": "GetSet",
+    "type": "SourceIsSource"
+  },
+  {
+    "sourcePackage": "com.water.model",
+    "targetPackage": "com.water.req",
+    "mapperPackage": "com.water.convert",
+    "targetNamer": "name+\u0027AddReq\u0027",
+    "mapperNamer": "name+\u0027Convert\u0027",
+    "mapperMethodName": "addReq2db",
+    "mapperType": "GetSet",
+    "type": "SourceIsDto",
+    "targetTemplateFileName": "addReq.java.vm"
+  },
+  {
+    "sourcePackage": "com.water.model",
+    "targetPackage": "com.water.req",
+    "mapperPackage": "com.water.convert",
+    "targetNamer": "name+\u0027UpdateReq\u0027",
+    "mapperNamer": "name+\u0027Convert\u0027",
+    "mapperMethodName": "updateReq2db",
+    "mapperType": "GetSet",
+    "type": "SourceIsDto",
+    "targetTemplateFileName": "updateReq.java.vm"
+  }
+]
