@@ -88,10 +88,8 @@ nnoremap X "_X
 nnoremap d "_d
 nnoremap c "_c
 nnoremap diw "_diw
-nnoremap ciw "_ciw
 
 vnoremap diw "_diw
-vnoremap ciw "_ciw
 
 nnoremap dd "_dd
 nnoremap D "_D
