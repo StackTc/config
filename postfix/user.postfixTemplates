@@ -1,4 +1,6 @@
-.json2String : json2String
-    java.lang.String     [com.alibaba.fastjson.JSONObject]             → if(com.alibaba.fastjson.JSONObject.toJSONString($expr$)){\
-                                                                            $END$\
-                                                                         }
+# Validate argument for Array/Collection/Map/String/Boolean
+.json2String : json转string
+# Boolean
+    ANY                 [com.alibaba.fastjson.JSONObject]     →  if(com.alibaba.fastjson.JSONObject.toJSONString($expr$)){\
+                                                                    $END$\
+                                                                 }
