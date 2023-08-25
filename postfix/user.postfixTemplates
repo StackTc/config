@@ -1,6 +1,6 @@
 # Validate argument for Array/Collection/Map/String/Boolean
-.json2String : json转string
-# Boolean
+.json2String : commons-lang json2String
+# ANY
     ANY                 [com.alibaba.fastjson.JSONObject]     →  if(com.alibaba.fastjson.JSONObject.toJSONString($expr$)){\
                                                                     $END$\
                                                                  }
