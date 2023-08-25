@@ -1,4 +1,4 @@
 .json2String : json2String
     java.lang.String     [com.alibaba.fastjson.JSONObject]             → if(com.alibaba.fastjson.JSONObject.toJSONString($expr$)){\
-                                                                                $END$\
+                                                                            $END$\
                                                                          }
