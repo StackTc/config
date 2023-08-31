@@ -1,6 +1,10 @@
 # Validate argument for Array/Collection/Map/String/Boolean
-.json2String : commons-lang json2String
+.jsonToString : commons-lang json2String
 # ANY
-    ANY                 [com.alibaba.fastjson.JSONObject]     →  if(com.alibaba.fastjson.JSONObject.toJSONString($expr$)){\
-                                                                    $END$\
-                                                                 }
+    ANY                 [com.alibaba.fastjson.JSONObject]     →  String $var:suggestVariableName()$ = com.alibaba.fastjson.JSONObject.toJSONString($expr$);
+
+.toObject : 字符串转对象
+    java.lang.String             [com.alibaba.fastjson.JSON]     →  com.alibaba.fastjson.JSON.parseObject($expr$, $end$);
+
+.groupByDouble : 双层groupBy
+    ANY →  $expr$.stream().collect(Collectors.groupingBy(TemplateShopDO::getTemplateSn, Collectors.mapping(t -> $end$, Collectors.toList())));
