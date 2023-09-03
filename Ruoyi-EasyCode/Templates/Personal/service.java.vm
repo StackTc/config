@@ -1,0 +1,74 @@
+##导入宏定义
+$!{define.vm}
+
+$!{mybatisCodehelper.vm}
+#set($ServiceName = $tool.append($tableInfo.name, "Service"))
+##设置回调
+##$!callback.setFileName($tool.append($ServiceName, ".java"))
+##$!callback.setSavePath($tool.append($tableInfo.savePath, "/service"))
+#set($serviceSavePath = $tool.append(${serviceSrcFolder},"/",${servicePackageName.replace(".","/")}))
+
+$!callback.setSavePath($serviceSavePath)
+$!callback.setFileName($tool.append($ServiceName, ".java"))
+
+#set($daoName = $tool.append($tableInfo.name, ${daoSuffix}))
+
+package $!{servicePackageName};
+
+import $!{modelPackageName}.$!{tableInfo.name};
+import ${mapperPackageName}.${daoName};
+import ${servicePackageName}.$!{tableInfo.name}Service;
+import ${resPackageName}.$!{tableInfo.name}PageRes;
+import com.water.res.PageResult;
+import org.springframework.stereotype.Service;
+import ${reqPackageName}.$!{tableInfo.name}AddReq;
+import ${reqPackageName}.$!{tableInfo.name}UpdateReq;
+import ${reqPackageName}.$!{tableInfo.name}PageReq;
+import ${resPackageName}.$!{tableInfo.name}Res;
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import java.util.List;
+import java.util.stream.Collectors;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.Page;
+
+##表注释（宏定义）
+@Service
+public class $!{ServiceName} extends ServiceImpl<$!{daoName}, $!{tableInfo.name}> {
+
+    public PageResult<$!{tableInfo.name}PageRes> page($!{tableInfo.name}PageReq req) {
+        Page<$!{tableInfo.name}> page = PageHelper.startPage(req.getPageNo(), req.getPageSize());
+        LambdaQueryWrapper<$!{tableInfo.name}> wrapper = Wrappers.lambdaQuery();
+
+        wrapper.eq($!{tableInfo.name}::getDeleted, false);
+        this.baseMapper.selectList(wrapper);
+        List<$!{tableInfo.name}PageRes> res = page.getResult().stream().map(
+        $!{tableInfo.name}Convert::db2PageRes
+        ).collect(Collectors.toList());
+        return new PageResult<>(res, page.getTotal());
+    }
+
+    public $!{tableInfo.name}Res get(Long id) {
+        $!{tableInfo.name} $!tool.firstLowerCase($tableInfo.name) = this.baseMapper.selectById(id);
+        return $!{tableInfo.name}Convert.db2Res($!tool.firstLowerCase($tableInfo.name));
+    }
+
+    public void add($!{tableInfo.name}AddReq req) {
+        $!{tableInfo.name} $!tool.firstLowerCase($tableInfo.name) = $!{tableInfo.name}Convert.addReq2Db(req);
+        this.baseMapper.insert($!tool.firstLowerCase($tableInfo.name));
+    }
+
+    public void update($!{tableInfo.name}UpdateReq req) {
+        $!{tableInfo.name} $!tool.firstLowerCase($tableInfo.name) = $!{tableInfo.name}Convert.updateReq2Db(req);
+        this.baseMapper.updateById($!tool.firstLowerCase($tableInfo.name));
+    }
+
+    public void delete(Long id) {
+        $!{tableInfo.name} $!tool.firstLowerCase($tableInfo.name) = new $!{tableInfo.name}();
+        update.setId(id);
+        update.setDeleted(true);
+        this.baseMapper.updateById(update);
+    }
+}
