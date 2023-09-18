@@ -14,8 +14,8 @@
 
 
 
-.groupByDouble : 双层groupBy
+.groupByDouble : double groupby
     ANY →  $expr$.stream().collect(Collectors.groupingBy(TemplateShopDO::getTemplateSn, Collectors.mapping(t -> $end$, Collectors.toList())));
 
-.groupByCount : groupBy统计个数
+.groupByCount : groupByCount
 	ANY -> $expr$.stream().collect(Collectors.groupingBy(Order::getUserId, Collectors.counting()));
