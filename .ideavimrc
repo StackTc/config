@@ -72,8 +72,6 @@ nmap mr mR
 nmap 'e 'E
 nmap 'r 'R
 
-nmap gril Vp
-
 " 使用以下命令，可以在Normal Mode和Visual/Select Mode下，利用Tab键和Shift-Tab键来缩进文本：
 nmap <tab> V>
 nmap <s-tab> V<
@@ -185,6 +183,16 @@ nmap <leader>hw <action>(HideActiveWindow);
 let g:WhichKeyDesc_Git = "<leader>g Git"
 let g:WhichKeyDesc_Git_RollbackHunk = "<leader>gr Vcs.RollbackChangedLines"
 nmap <leader>gr :action Vcs.RollbackChangedLines<CR>
+
+let g:WhichKeyDesc_Git_Git.Branches = "<leader>gb Git.Branches"
+nmap <leader>gb :action Git.Branches<CR>
+
+let g:WhichKeyDesc_Git_GitToolBox.SwitchRecentBranches = "<leader>grb GitToolBox.SwitchRecentBranches"
+nmap <leader>grb :action GitToolBox.SwitchRecentBranches<CR>
+
+
+
+
 
 " i: Insert ⭐️
 let g:WhichKeyDesc_InsertAfterBrackets = "<leader>i InsertAfterBrackets"
