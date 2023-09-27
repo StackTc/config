@@ -1,7 +1,7 @@
 # Validate argument for Array/Collection/Map/String/Boolean
 .jsontostring : commons-lang json2String
 # ANY
-    ANY                 [com.alibaba.fastjson.JSONObject]     →  String $var:suggestVariableName()$ = com.alibaba.fastjson.JSONObject.toJSONString($expr$);
+    ANY                 [com.alibaba.fastjson.JSONObject]     →  com.alibaba.fastjson.JSONObject.toJSONString($expr$)
 
 .toobject : 字符串转对象
     ANY →  JSON.parseObject($expr$, $end$);
