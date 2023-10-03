@@ -11,7 +11,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/macos/.oh-my-zsh"
+export ZSH="/Users/stacktc/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -123,9 +123,6 @@ pastefinish() {
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
-alias jump='ssh -p 23456 lintiancheng@47.97.20.102'
-alias jleoaogoodscenteruat='expect /Users/stacktc/Documents/leoao/linuxcommond/leoaogoodscenteruat'
-alias jleoaogoodsoperateuat='expect /Users/stacktc/Documents/leoao/linuxcommond/leoaogoodsoperateuat'
 alias gc='git clone'
 alias gp='git pull'
 export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
@@ -158,7 +155,6 @@ alias mysqlstop='sudo /usr/local/mysql/support-files/mysql.server stop'
 
 alias ls='exa'
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(zoxide init zsh --cmd j)"
 
 source ~/dotfile/functionrc
