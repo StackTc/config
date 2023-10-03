@@ -1,0 +1,29 @@
+fkill() {
+  local pid
+  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ]
+  then
+    echo $pid | xargs kill -${1:-9}
+  fi
+}
+#!/bin/sh
+
+fcd() {
+    if [ -n "$1" ]; then
+        searchdir="$1"
+    else
+        searchdir="$HOME"
+    fi
+
+    tmpfile=$(mktemp)
+    find "$searchdir" \( ! -regex '.*/\..*' \) ! -name __pycache__ -type d | fzf > "$tmpfile"
+    destdir=$(cat "$tmpfile")
+    rm -f "$tmpfile"
+
+    if [ -z "$destdir" ]; then
+        return 1
+    fi
+
+    cd "$destdir"
+}
