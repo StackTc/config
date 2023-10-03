@@ -11,7 +11,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/stacktc/.oh-my-zsh"
+export ZSH="/Users/macos/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -123,8 +123,6 @@ pastefinish() {
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 alias jump='ssh -p 23456 lintiancheng@47.97.20.102'
 alias jleoaogoodscenteruat='expect /Users/stacktc/Documents/leoao/linuxcommond/leoaogoodscenteruat'
 alias jleoaogoodsoperateuat='expect /Users/stacktc/Documents/leoao/linuxcommond/leoaogoodsoperateuat'
@@ -163,5 +161,5 @@ alias ls='exa'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(zoxide init zsh --cmd j)"
 
-source ./dotfile/functionrc
+source ~/dotfile/functionrc
 alias wechat="nohup /Applications/WeChat.app/Contents/MacOS/WeChat > /dev/null 2>&1&"
