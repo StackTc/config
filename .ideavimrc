@@ -18,8 +18,11 @@ nnoremap L $
 nnoremap H ^
 nnoremap dH d^
 nnoremap yH y^
+nnoremap vH v^
 nnoremap dL d$
 nnoremap yL y$
+nnoremap vL v$
+
 nnoremap <leader>sc :nohlsearch<CR>
 vnoremap Lsymotion-s) $
 vnoremap H ^
