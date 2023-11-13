@@ -82,7 +82,7 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(sublime z git zsh-syntax-highlighting zsh-autosuggestions autojump vi-mode)
-plugins=(sublime git vi-mode)
+plugins=(sublime git vi-mode copypath copyfile copybuffer)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -136,7 +136,7 @@ lfcd () {
     fi
 }
 
-bindkey -s '^o' 'lfcd\n'
+# bindkey -s '^o' 'lfcd\n'
 alias sublime='open -a "Sublime Text"'
 alias idea='open -a "IntelliJ IDEA"'
 alias vs='open -a "Visual Studio Code"'
@@ -159,3 +159,4 @@ eval "$(zoxide init zsh --cmd j)"
 
 source ~/dotfile/functionrc
 alias wechat="nohup /Applications/WeChat.app/Contents/MacOS/WeChat > /dev/null 2>&1&"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

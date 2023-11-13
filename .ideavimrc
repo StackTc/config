@@ -147,7 +147,7 @@ set notimeout
 " g go
 let g:WhichKeyDesc_Go_GotoSuperMethod = "<leader>gs GotoSuperMethod"
 nmap <leader>gs <action>(GotoSuperMethod)
-let g:WhichKeyDesc_Go_GotoImplementation = "<leader>gs GotoImplementation"
+let g:WhichKeyDesc_Go_GotoImplementation = "<leader>gi GotoImplementation"
 nmap <leader>gi <action>(GotoImplementation)
 
 
@@ -257,7 +257,7 @@ map <leader>rn <action>(RenameElement)
 let g:WhichKeyDesc_RunAnything = "<leader>rd RunAnything"
 
 let g:WhichKeyDesc_RunOrRe_Debug = "<leader>rd JRebel Debug"
-map <leader>rd <action>(JRebel Debug)
+map <leader>rd <action>(RebelDebugAction2022UI)
 
 
 let g:WhichKeyDesc_RunOrRe_Rerun = "<leader>rr Rerun"
