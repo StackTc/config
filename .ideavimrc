@@ -225,6 +225,10 @@ nmap <leader>sm <action>(EditorContextInfo)
 let g:WhichKeyDesc_Show_Annotate = "<leader>sa 查看git提交信息（文件左边Annotate）"
 nmap <leader>sa <action>(Annotate)
 
+let g:WhichKeyDesc_Show_Editor_Result = "<leader>sr 在下方输出查询结果"
+nmap <leader>sr <action>(Console.Toggle.Notebook.Mode)
+
+
 " s: split
 let g:WhichKeyDesc_Split = "<leader>sp 切分窗口"
 let g:WhichKeyDesc_Split_Right = "<leader>spr 切分窗口-右"
