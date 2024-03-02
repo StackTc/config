@@ -47,17 +47,13 @@ set quickscope
 set incsearch
 set hlsearch
 set keep-english-in-normal
-set multicursor
 set ideajoin
 set idearefactormode=keep
 
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 
-map q <Plug>(multicursor-ms/)
-map z <Plug>(multicursor-mcv)
-map Z <Plug>(multicursor-mcr)
-" set surrouns
+"sset surrouns
 " ================================================================================================
 " = No Leader Keymaps =====================================
 " ================================================================================================
@@ -118,14 +114,25 @@ vnoremap <c-j> 5j
 vnoremap <c-k> 5k
 
 
+" multiple-cursors
 nmap <C-n> <Plug>NextWholeOccurrence
 xmap <C-n> <Plug>NextWholeOccurrence
+omap <C-n> <Plug>NextWholeOccurrence
 nmap g<C-n> <Plug>NextOccurrence
 xmap g<C-n> <Plug>NextOccurrence
-nmap <C-x> <Plug>SkipOccurrence
+omap g<C-n> <Plug>NextOccurrence
 xmap <C-x> <Plug>SkipOccurrence
-nmap <C-p> <Plug>RemoveOccurrence
 xmap <C-p> <Plug>RemoveOccurrence
+
+" Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
+" <A-n> is used to enter accented text, e.g., ñ
+
+nmap <S-C-n> <Plug>AllWholeOccurrences
+xmap <S-C-n> <Plug>AllWholeOccurrences
+omap <S-C-n> <Plug>AllWholeOccurrences
+nmap g<S-C-n> <Plug>AllOccurrences
+xmap g<S-C-n> <Plug>AllOccurrences
+omap g<S-C-n> <Plug>AllOccurrences
 
 " open file path noremap <leader>o <ESC>:action ShowFilePath<CR>
 

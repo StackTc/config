@@ -21,3 +21,6 @@
 	ANY -> $expr$.stream().collect(Collectors.groupingBy(Order::getUserId, Collectors.counting()));
 .log : log
     ANY -> log.info("$expr$={}", com.alibaba.fastjson.JSONObject.toJSONString($expr$));
+
+.newlist : new Object ArrayList
+    ANY →  List<$expr$> $end$ = new ArrayList<>();
