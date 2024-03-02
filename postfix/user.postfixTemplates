@@ -23,4 +23,4 @@
     ANY -> log.info("$expr$={}", com.alibaba.fastjson.JSONObject.toJSONString($expr$));
 
 .newlist : new Object ArrayList
-    ANY →  List<$expr$> $end$ = new ArrayList<>();
+    ANY →  List<$expr$> $var:suggestVariableName()$ = new ArrayList<>();
