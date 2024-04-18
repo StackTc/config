@@ -16,10 +16,11 @@ let mapleader=" "
 " ================================================================================================
 nnoremap L $
 nnoremap H ^
-nnoremap dH d^
+nnoremap dH "md^
 nnoremap yH y^
 nnoremap vH v^
-nnoremap dL d$
+nnoremap dL "md$
+nnoremap D "md$
 nnoremap yL y$
 nnoremap vL v$
 
@@ -288,6 +289,9 @@ let g:WhichKeyDesc_ViewBreakpoints = "<leader>dv 查看所有断点"
 map <leader>dv <action>(ViewBreakpoints)
 let g:WhichKeyDesc_ToggleLineBreakpoint = "<leader>ds 打一个断点"
 map <leader>ds <action>(ToggleLineBreakpoint)
+let g:WhichKeyDesc_RunToCursor = "<leader>dc 跳到光标处断点"
+map <leader>dc <action>(RunToCursor)
+
 " w: Window ⭐️
 let g:WhichKeyDesc_Windows = "<leader>w Windows"
 let g:WhichKeyDesc_Windows_maximize = "<leader>wo maximize"
