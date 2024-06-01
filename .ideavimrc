@@ -18,15 +18,17 @@ nnoremap L $
 nnoremap H ^
 nnoremap dH d^
 nnoremap yH y^
+nnoremap yH y^
 nnoremap vH v^
 nnoremap dL d$
 nnoremap yL y$
 nnoremap vL v$
 
 nnoremap <leader>sc :nohlsearch<CR>
-vnoremap Lsymotion-s) $
+vnoremap L $
 vnoremap H ^
-nmap <C-f> <Plug>(easymotion-s)
+
+" nmap <C-f> <Plug>(easymotion-s)
 " xnoremap p pgvy
 nnoremap <leader>j 5j
 nnoremap <leader>k 5k
@@ -49,6 +51,7 @@ set hlsearch
 set keep-english-in-normal
 set ideajoin
 set idearefactormode=keep
+set smartcase
 
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
@@ -106,6 +109,7 @@ nnoremap <leader>D "*D
 vnoremap <leader>d "*d
 vnoremap <leader>dd "*dd
 nmap <leader>p ddP
+nmap <leader>y yi"
 
 " easy window navigation
 nnoremap <c-j> 5j

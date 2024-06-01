@@ -153,10 +153,12 @@ alias mysqlstop='sudo /usr/local/mysql/support-files/mysql.server stop'
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 
-alias ls='exa'
+alias ls='exa --icons'
 
 eval "$(zoxide init zsh --cmd j)"
 
 source ~/dotfile/functionrc
 alias wechat="nohup /Applications/WeChat.app/Contents/MacOS/WeChat > /dev/null 2>&1&"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+PATH=~/.console-ninja/.bin:$PATH
