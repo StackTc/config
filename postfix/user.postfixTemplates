@@ -12,6 +12,10 @@
 .jsontoarray : 字符串转集合
     ANY →  JSONArray.parseArray($expr$, $end$);
 
+.singleList : 单对象转集合
+    ANY [java.util.Collections] → java.util.Collections.singletonList($expr$)$end$
+
+
 
 
 .groupByDouble : double groupby

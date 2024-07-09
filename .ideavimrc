@@ -81,6 +81,7 @@ vmap <s-tab> <gv
 " 快速复制到行尾
 vnoremap Y y$
 nnoremap Y y$
+nnoremap <leader>y yi"
 
 nnoremap yH vg^y
 nnoremap yL y$
