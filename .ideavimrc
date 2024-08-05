@@ -280,7 +280,7 @@ let g:WhichKeyDesc_RunOrRe_Stop = "<leader>rs Stop"
 map <leader>rs <action>(Stop)
 
 map <leader>ra <action>(RunAnything)
-let g:WhichKeyDesc_DebugClass = "<leader>rm DebugClass"
+let g:WhichKeyDesc_DebugClass = "<leader>rm Debug"
 map <leader>rm <action>(DebugClass)
 
 let g:WhichKeyDesc_Debug = "<leader>d 断点"
@@ -362,6 +362,10 @@ vmap <leader>ef <action>(IntroduceField)
 vmap <leader>ev <action>(IntroduceVariable)
 
 set selectmode+=mouse
+
+" other
+let g:WhichKeyDesc_QuickJavaDoc = "<leader>sd QuickJavaDoc"
+nmap <leader>sd <action>(QuickJavaDoc)
 
 
 " edit ideavimrc;;

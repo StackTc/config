@@ -28,7 +28,10 @@
 
 .newlist : new Object ArrayList
     ANY →  List<$expr$> $var:suggestVariableName()$ = new ArrayList<>();
-
+.ifNot : if not
+    ANY → if(!$expr$) {\
+              $END$\
+          }
 
 
 # Junit5
