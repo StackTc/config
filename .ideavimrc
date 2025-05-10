@@ -10,6 +10,7 @@ Plug 'tommcdo/vim-exchange'
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'dbakker/vim-paragraph-motion'
+Plug 'tpope/vim-repeat'
 let mapleader=" "
 " ================================================================================================
 " = Basic settings =====================================
@@ -35,7 +36,7 @@ nnoremap <leader>k 5k
 
 set clipboard+=unnamed
 set ignorecase
-set scrolloff=30
+set scrolloff=25
 set history=200
 
 " Plug
@@ -82,6 +83,8 @@ vmap <s-tab> <gv
 vnoremap Y y$
 nnoremap Y y$
 nnoremap <leader>y yi"
+nnoremap <leader>r gri"
+nnoremap <leader>Y yi(
 
 nnoremap yH vg^y
 nnoremap yL y$
@@ -203,6 +206,14 @@ let g:WhichKeyDesc_Git_GitToolBox.SwitchRecentBranches = "<leader>grb GitToolBox
 nmap <leader>grb :action GitToolBox.SwitchRecentBranches<CR>
 
 
+" c: copilot
+left g:WhichKeyDesc_Copilot = "<leader>c Copilot"
+left g:WhichKeyDesc_Copilot_Chat_Show = "<leader>cs Copilot.Chat.Show"
+left g:WhichKeyDesc_Copilot_Chat_Hide = "<leader>ch Copilot.Chat.Hide"
+nmap <leader>cs :action copilot.chat.show<CR>
+nmap <leader>ch :action HideActiveWindow<CR>
+
+
 
 
 
@@ -314,7 +325,7 @@ let g:WhichKeyDesc_CopyKeyDesc_CopyPathWithLineNumber = "<leader>cl 复制类行
 nmap <leader>cl <action>(CopyPathWithLineNumber)
 
 let g:WhichKeyDesc_CopyKeyDesc_RestfulTool.action.OptionForEditor-CopyApiPath = "<leader>cl 复制类行号"
-nmap <leader>ca <action>(RestfulTool.action.OptionForEditor-CopyApiPath)
+nmap <leader>ca <action>(GenerateRestUrl)
 
 let g:WhichKeyDesc_CopyKeyDesc_CodeCompletion = "<leader>cc 代码提示"
 nmap <leader>cc <action>(CodeCompletion)
